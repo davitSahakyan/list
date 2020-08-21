@@ -386,3 +386,43 @@ const data = [
             "https://ghibliapi.herokuapp.com/films/5fdfb320-2a02-49a7-94ff-5ca418cae602",
     },
 ];
+const rootDiv = document.getElementById("root");
+const filmsContainer = document.getElementById("filmsContainer");
+
+const inputField = document.getElementById("inputField");
+
+removeSpace = (string) => {
+    const stringWithoutSpaces = string.replace(/\s+/, "");
+    return stringWithoutSpaces;
+};
+
+let filteredData = [...data];
+const showList = (filteredData) => {
+    filteredData.forEach((item) => {
+        const divElement = document.createElement("div");
+
+        const h2Element = document.createElement("h2");
+        const h3Element = document.createElement("h3");
+        const spanElement = document.createElement("span");
+        const pElement = document.createElement("p");
+
+        divElement.classList = "card";
+        h2Element.classList = "title";
+        h3Element.classList = "director";
+        spanElement.classList = "releaseDate";
+        pElement.classList = "description";
+
+        h2Element.textContent = item.title;
+        h3Element.textContent = item.director;
+        spanElement.textContent = item.release_date;
+        pElement.textContent = item.description;
+
+        divElement.appendChild(h2Element);
+        divElement.appendChild(h3Element);
+        divElement.appendChild(spanElement);
+        divElement.appendChild(pElement);
+
+        filmsContainer.appendChild(divElement);
+    });
+};
+showList(filteredData);
