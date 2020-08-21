@@ -426,3 +426,13 @@ const showList = (filteredData) => {
     });
 };
 showList(filteredData);
+
+inputField.addEventListener("keyup", () => {
+    let newFiteredData = filteredData.filter((item) => {
+        const itemName = item.title;
+        const input = removeSpace(inputField.value);
+        if (itemName.match(input)) return item;
+    });
+    filmsContainer.innerHTML = "";
+    showList(newFiteredData);
+});
